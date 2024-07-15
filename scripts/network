@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Get the network interface (assuming eth0 for wired or wlan0 for wireless)
+interface=$(ip route | grep default | awk '{print $5}')
+
+# Get RX and TX bytes using the interface
+rx_bytes=$(cat /sys/class/net/$interface/statistics/rx_bytes)
+tx_bytes=$(cat /sys/class/net/$interface/statistics/tx_bytes)
+
+# Convert bytes to human-readable format
+rx_human=$(numfmt --to=iec --suffix=B $rx_bytes)
+tx_human=$(numfmt --to=iec --suffix=B $tx_bytes)
+
+# Output the network traffic
+echo -e "Interface: $interface\nRX: $rx_human\nTX: $tx_human"
+

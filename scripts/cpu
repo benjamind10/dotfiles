@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Get CPU usage using top command
+cpu="$(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}')"
+
+# Output the CPU usage
+echo -e "$cpu CPU"
+

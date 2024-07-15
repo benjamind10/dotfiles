@@ -1,0 +1,74 @@
+#!/bin/bash
+
+# Function to create a progress bar
+progress_bar() {
+    local value=$1
+    local max=$2
+    local width=$3
+    local num_bars=$(( (value * width) / max ))
+
+    # Generate the bar
+    local bar="["
+    for ((i=0; i<num_bars; i++)); do
+        bar+="="
+    done
+    for ((i=num_bars; i<width; i++)); do
+        bar+=" "
+    done
+    bar+="]"
+
+    echo -ne "$bar"
+}
+
+# Function to get memory usage
+get_memory_usage() {
+    total_mem=$(free -m | awk '/^Mem:/ {print $2}')
+    used_mem=$(free -m | awk '/^Mem:/ {print $3}')
+    mem_percentage=$(( (used_mem * 100) / total_mem ))
+    echo -e "Memory Usage: $used_mem MB / $total_mem MB"
+    progress_bar $used_mem $total_mem 50
+    echo " ($mem_percentage%)"
+}
+
+# Function to get CPU usage
+get_cpu_usage() {
+    cpu=$(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1}')
+    echo -e "CPU Usage: $cpu%"
+    progress_bar ${cpu%.*} 100 50
+    echo " ($cpu%)"
+}
+
+# Function to get network traffic
+get_network_traffic() {
+    interface=$(ip route | grep default | awk '{print $5}')
+    rx_bytes=$(cat /sys/class/net/$interface/statistics/rx_bytes)
+    tx_bytes=$(cat /sys/class/net/$interface/statistics/tx_bytes)
+    rx_human=$(numfmt --to=iec --suffix=B $rx_bytes)
+    tx_human=$(numfmt --to=iec --suffix=B $tx_bytes)
+    echo -e "Network Traffic on $interface:"
+    echo -e "  RX: $rx_human"
+    echo -e "  TX: $tx_human"
+}
+
+# ASCII art header
+echo -e "==================================="
+echo -e "          SYSTEM SUMMARY           "
+echo -e "==================================="
+echo -e "      ___                         "
+echo -e "     (.. \    \` .-.   .-.  .-.    "
+echo -e "      <> |   (  @ ) (   ) (   )   "
+echo -e "     |  |   \`    \` -' \`- ' \`-'    "
+echo -e "     / /\ \\   __                 "
+echo -e "     ""  ""                         "
+echo -e "==================================="
+echo ""
+
+# Get and display system usage information
+get_memory_usage
+echo ""
+get_cpu_usage
+echo ""
+get_network_traffic
+echo ""
+echo -e "==================================="
+
