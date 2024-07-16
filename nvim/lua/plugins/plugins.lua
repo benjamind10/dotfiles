@@ -10,6 +10,13 @@ return {
   { "L3MON4D3/LuaSnip" }, -- Snippet engine
   { "saadparwaiz1/cmp_luasnip" }, -- Snippet completion source
 
+  {
+    "preservim/nerdcommenter",
+    config = function()
+      vim.g.NERDCreateDefaultMappings = 1
+      -- You can add more configurations here if needed
+    end,
+  },
   -- Add neotest and its dependencies
   {
     "nvim-neotest/neotest",
