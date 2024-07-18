@@ -14,3 +14,6 @@ vim.api.nvim_set_keymap("n", "<leader>00", "<Plug>NERDCommenterToggle", {})
 vim.api.nvim_set_keymap("v", "<leader>00", "<Plug>NERDCommenterToggle", {})
 vim.api.nvim_set_keymap("n", "<leader>c<space>", "<Plug>NERDCommenterToggle", {})
 vim.api.nvim_set_keymap("v", "<leader>c<space>", "<Plug>NERDCommenterToggle", {})
+
+vim.api.nvim_set_keymap("n", "<leader><Tab>[", ":bprevious<CR>", {})
+vim.api.nvim_set_keymap("n", "<leader><Tab>]", ":bnext<CR>", {})
