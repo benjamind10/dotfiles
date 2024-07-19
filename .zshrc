@@ -84,12 +84,12 @@ alias compress='tar -zcvf'
 alias memory='~/.local/bin/memory'
 alias kernel='~/.local/bin/kernel'
 alias networktraffic='~/.local/bin/network'
-alias uptime='~/.local/bin/uptime'
 alias cpu='~/.local/bin/cpu'
 alias icat="kitten icat"
 alias s="kitten ssh"
 alias d="kitten diff"
 alias sysummary='~/.local/bin/system_summary'
+alias disksummary='~/.local/bin/disksummary'
 alias sourcez='source ~/.zshrc'
 alias c='clear'
 alias x='exit'
@@ -99,6 +99,16 @@ alias hg='history | grep '
 alias ag='alias | grep '
 alias grep='grep --color=auto'
 alias idesigner='~/Documents/GPA/designerlauncher/app/designerlauncher.sh'
+alias darkbot='sshfs root@104.236.193.213:/opt/darkbot ~/Documents/darkbot -o allow_other'
+alias elev8cicd='sshfs bduran@192.168.1.166:/home/bduran/Documents/code/Elev8_CICD ~/Documents/GPA/elev8cicd_remote -o allow_other'
+alias lgit='lazygit'
+alias lgits='lazygit status'
+
+#tail with color
+tailcolor() {
+    tail -f "$1" | ccze
+}
+
 
 # User configuration
 
@@ -114,3 +124,7 @@ eval "$(pyenv virtualenv-init -)"
 
 nerdfetch
 
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
