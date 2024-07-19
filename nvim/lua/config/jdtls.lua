@@ -1,18 +1,14 @@
 local jdtls = require("jdtls")
 
--- Define the root directory
-local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
-local root_dir = require("jdtls.setup").find_root(root_markers)
-
--- Define the workspace directory
-local workspace_dir = vim.fn.fnamemodify(root_dir, ":p:h:t")
-
--- Set JDTLS configuration
 local config = {
-  cmd = { "/home/shiva/.local/share/nvim/lazy/nvim-jdtls" },
-  root_dir = root_dir,
+  cmd = { "jdtls" }, -- Ensure 'jdtls' is correctly set in your PATH
+  root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }),
   settings = {
-    java = {},
+    java = {
+      saveActions = {
+        organizeImports = false, -- Disable organize imports on save
+      },
+    },
   },
   init_options = {
     bundles = {},

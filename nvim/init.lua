@@ -3,7 +3,7 @@ require("config.lazy")
 require("config.options")
 require("custom.autosave")
 require("config.lsp")
-require("config.jdtls")
+--require("config.jdtls")
 
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
@@ -11,3 +11,17 @@ vim.api.nvim_create_autocmd("VimEnter", {
     vim.opt.relativenumber = false
   end,
 })
+
+--vim.diagnostic.config({
+--virtual_text = false,
+--signs = false,
+--update_in_insert = false,
+--severity_sort = false,
+--float = {
+--source = "always",
+--border = "rounded",
+--format = function(diagnostic)
+--return string.format("%s: %s", diagnostic.source, diagnostic.message)
+--end,
+--},
+--})
