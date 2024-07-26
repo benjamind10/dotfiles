@@ -103,7 +103,8 @@ alias darkbot='sshfs root@104.236.193.213:/opt/darkbot ~/Documents/darkbot -o al
 alias elev8cicd='sshfs bduran@192.168.1.166:/home/bduran/Documents/code/Elev8_CICD ~/Documents/GPA/elev8cicd_remote -o allow_other'
 alias lgit='lazygit'
 alias lgits='lazygit status'
-alias newellvpn='globalprotect connect --portal nbprisma.newellco.com'
+alias newellvpn='sudo openconnect --protocol=gp --user=XV04474 nbprisma.newellco.com'
+alias aptupgradable='apt list --upgradable'
 
 #tail with color
 tailcolor() {
