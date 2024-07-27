@@ -1,7 +1,0 @@
-Host darkbot
-  HostName 104.236.193.213
-  User root
-
-Host 152_elev8
-  HostName 172.16.110.152
-  User gpa_admin
