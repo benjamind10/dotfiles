@@ -16,6 +16,12 @@ set $mod Mod4
 # Wallpaper setting
 exec_always --no-startup-id swaybg -i /home/shiva/Pictures/blue-space-7680x4320.jpg -m fill
 
+# Keybinding to turn off the displays
+bindsym $mod+Shift+F1 exec "swaymsg 'output * dpms off'"
+
+# Keybinding to turn on the displays
+bindsym $mod+Shift+F2 exec "swaymsg 'output * dpms on'"
+
 
 #####################################################################################################################
 #################                          Define the movements keys - variables                    #################
@@ -44,7 +50,7 @@ bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
+bindsym $mod+6 workspace 6pp
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
@@ -316,7 +322,7 @@ bindsym $mod+i bar mode invisible
 #####################################################################################################################
 
 for_window [class="^.*"] border pixel 1
-gaps inner 10
+gaps inner 5
 gaps outer 1
 #smart_gaps on
 #smart_borders on
@@ -344,24 +350,24 @@ mode "$mode_gaps" {
 }
 
 mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner current plus 5
-        bindsym minus gaps inner current minus 5
+        bindsym plus  gaps inner current plus 10
+        bindsym minus gaps inner current minus 10
         bindsym 0     gaps inner current set 0
 
-        bindsym Shift+plus  gaps inner all plus 5
-        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+plus  gaps inner all plus 10
+        bindsym Shift+minus gaps inner all minus 10
         bindsym Shift+0     gaps inner all set 0
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
 mode "$mode_gaps_outer" {
-        bindsym plus  gaps outer current plus 5
-        bindsym minus gaps outer current minus 5
+        bindsym plus  gaps outer current plus 10
+        bindsym minus gaps outer current minus 10
         bindsym 0     gaps outer current set 0
 
-        bindsym Shift+plus  gaps outer all plus 5
-        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+plus  gaps outer all plus 10
+        bindsym Shift+minus gaps outer all minus 10
         bindsym Shift+0     gaps outer all set 0
 
         bindsym Return mode "default"
@@ -393,7 +399,8 @@ bar {
      height 25
   position top
     font pango:OperatorMono Nerd Font 11
-  status_command i3status
+    status_command i3status
+    #status_command i3blocks -c $HOME/.config/i3blocks/config
     tray_padding 1
     strip_workspace_numbers yes
 
@@ -430,7 +437,7 @@ exec xset r rate 300 50 h&
 #exec --no-startup-id ~/.screenlayout/screenlayout.sh
 
 # run rofi programs
-#bindsym $mod+m exec "rofi -show window -no-default-config -config ~/.config/rofi/main.rasi"
+bindsym $mod+m exec "rofi -show window -no-default-config -config ~/.config/rofi/config.rasi"
 bindsym $mod+d exec "rofi -show run -no-default-config -config ~/.config/rofi/config.rasi"
 #bindsym $mod+s exec "rofi -show drun -no-default-config -config ~/.config/rofi/full_screen.rasi"
 #bindsym $mod+z exec "rofi -show  -modi ':rofi-bookmarks' -no-default-config -config ~/.config/rofi/main.rasi"

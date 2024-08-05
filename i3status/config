@@ -1,11 +1,11 @@
 # i3status configuration file.
 # see "man i3status" for documentation.
-
+ 
 # It is important that this file is edited as UTF-8.
 # The following line should contain a sharp s:
 # ß
 # If the above line is not correctly displayed, fix your editor first!
-
+ 
 general {
         colors = true
         interval = 5
@@ -13,81 +13,95 @@ general {
         color_degraded = "#fafe7c" # Light yellow
         color_bad = "#ff7770" # Light red
 }
-
+ 
 # order += "ipv6"
 order += "volume master"
 #order += "wireless _first_"
 order += "ethernet enp4s0"
-# order += "battery all"
-order += "battery 0"
+#order += "battery all"
+#order += "battery 1"
 order += "disk /"
 order += "load"
 order += "memory"
 order += "tztime local"
-
-# wireless _first_ {
-#         format_up = "(%quality at %essid)"
-#         format_down = "down"
-# }
-
+#order += "run_script weather"
+ 
 #wireless _first_ {
-#        format_up = " %essid  "
-#        format_down = " Down  "
+         #format_up = "(%quality at %essid)"
+         #format_down = "down"
 #}
-
+ 
+wireless _first_ {
+        format_up = "📶 %essid  -  %ip - (%quality, %bitrate) |"
+        format_down = "W: down"
+}
+ 
 volume master {
-        format = "  %volume  "
+        format = "   %volume |"
         format_muted = " %volume  "
         device = "default"
         mixer = "Master"
         mixer_idx = 0
 }
-
+ 
 ethernet enp4s0 {
-        format_up = "E: %ip (%speed) "
+        format_up = "🌍 %ip (%speed) |"
         format_down = "E: down "
 }
-
-# battery all {
-#         format = "%status %percentage"
-# }
-
-#battery 0 {
-#        format = "%status %percentage"
-#        hide_seconds = true
-#        integer_battery_capacity = true
-#        last_full_capacity = true
-#        status_chr = " +"
-#        status_bat = ""
-#        status_full = ""
-#}
-
-
+ 
+ 
+battery all {
+    format = "%status %percentage |"
+    hide_seconds = true
+    integer_battery_capacity = true
+    last_full_capacity = true
+    status_chr = "⚡"
+    status_bat = "🔋"
+    status_full = "☻"
+}
+ 
+ 
+battery 1 {
+        format = "%status  %percentage"
+        hide_seconds = true
+        integer_battery_capacity = true
+        last_full_capacity = true
+        status_chr = "⚡"
+        status_bat = "🔋"
+        status_full = "☻"
+}
+ 
+ 
 memory {
-        format = "  Mem %used  "
+        format = "   Mem %used |"
         threshold_degraded = "1G"
         format_degraded = "MEMORY < %available"
 }
-
+ 
 tztime local {
-        format = "   %a %m-%d-%Y    %I:%M %p  "
+        format = "   %a %m-%d-%Y      %I:%M %p  "
 }
-
+ 
 load {
-    format = "  %1min  "
+    format = "🖥️  %1min |"
 }
-
+ 
 cpu_usage {
     format = "  %usage  "
 }
-
+ 
 cpu_temperature 0 {
 	format = "  %degrees°C  "
 }
-
+ 
 disk "/" {
-	format = " %avail  "
+	format = "  %avail |"
 	prefix_type	= custom
 	low_threshold = 20
 	threshold_type = percentage_avail
 }
+
+#run_script weather {
+    #path = "~/.config/i3blocks/scripts/weather.sh"
+    #interval = 600
+#}
