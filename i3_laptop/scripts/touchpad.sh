@@ -7,7 +7,6 @@ DEVICE_ID=$(xinput list --id-only "$DEVICE_NAME")
 if [ -n "$DEVICE_ID" ]; then
   # Enable tap-to-click
   xinput set-prop "$DEVICE_ID" "libinput Tapping Enabled" 1
-  xinput set-prop "$DEVICE_ID" "libinput Tapping Enabled Default" 1
 
   # Enable natural scrolling
   xinput set-prop "$DEVICE_ID" "libinput Natural Scrolling Enabled" 1

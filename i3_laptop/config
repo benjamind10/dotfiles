@@ -7,7 +7,7 @@ set $mod Mod4
 # Wallpaper setting
 # ===================================================================
 #exec_always --no-startup-id feh --bg-scale /home/shiva/Pictures/blue-space-7680x4320.jpg
-exec_always --no-startup-id sh -c "sleep 10; feh --bg-scale /home/bduran/Pictures/Wallpapers/blue-space-7680x4320.jpg"
+exec_always --no-startup-id sh -c "sleep 10; feh --bg-scale /home/bduran/Pictures/5-galaxy-cool-wallpapers-1024x640.webp"
 exec_always --no-startup-id QT_QPA_PLATFORM=xcb copyq
 
 # ===================================================================
@@ -56,12 +56,12 @@ bindsym $mod+Shift+9 move container to workspace 9
 # ===================================================================
 set $mode_system System (k) lock, (l) logout, (u) suspend, (h) hibernate, (r) reboot, (s) shutdown
 mode "$mode_system" {
-    bindsym k exec --no-startup-id ~/.config/sway/scripts/exit.sh lock, mode "default"
-    bindsym l exec --no-startup-id ~/.config/sway/scripts/exit.sh logout, mode "default"
-    bindsym u exec --no-startup-id ~/.config/sway/scripts/exit.sh suspend, mode "default"
-    bindsym h exec --no-startup-id ~/.config/sway/scripts/exit.sh hibernate, mode "default"
-    bindsym r exec --no-startup-id ~/.config/sway/scripts/exit.sh reboot, mode "default"
-    bindsym s exec --no-startup-id ~/.config/sway/scripts/exit.sh shutdown, mode "default"
+    bindsym k exec --no-startup-id ~/.config/i3/scripts/exit.sh lock, mode "default"
+    bindsym l exec --no-startup-id ~/.config/i3/scripts/exit.sh logout, mode "default"
+    bindsym u exec --no-startup-id ~/.config/i3/scripts/exit.sh suspend, mode "default"
+    bindsym h exec --no-startup-id ~/.config/i3/scripts/exit.sh hibernate, mode "default"
+    bindsym r exec --no-startup-id ~/.config/i3/scripts/exit.sh reboot, mode "default"
+    bindsym s exec --no-startup-id ~/.config/i3/scripts/exit.sh shutdown, mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -78,8 +78,8 @@ bindsym $mod+Shift+c reload
 # ===================================================================
 bindsym $mod+Return exec --no-startup-id kitty;focus
 bindsym control+mod1+u exec --no-startup-id pavucontrol
-#bindsym $mod+Shift+Return exec --no-startup-id nemo;focus
-bindsym $mod+Shift+Return exec --no-startup-id thunar;focus
+bindsym $mod+Shift+Return exec --no-startup-id nemo;focus
+#bindsym $mod+Shift+Return exec --no-startup-id thunar;focus
 bindsym $mod+q kill
 
 # ===================================================================
@@ -98,6 +98,15 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+# Bind Fn+F10 to previous track
+bindsym XF86AudioPrev exec playerctl previous
+
+# Bind Fn+F12 to next track
+bindsym XF86AudioNext exec playerctl next
+
+# Bind Fn+F11 to play/pause
+bindsym XF86AudioPlay exec playerctl play-pause
+
 
 # ===================================================================
 # Brightness controls
@@ -224,13 +233,15 @@ bar {
     height 25
     position top
     font pango:OperatorMono Nerd Font 11
-    status_command i3status
+    #status_command i3status
+    status_command i3blocks
+
     tray_padding 5
     strip_workspace_numbers yes
 
     colors {
         separator  #1f222d
-        background #1f222d
+
         statusline #81a1c1
 
         # border  background text
@@ -260,7 +271,10 @@ bindsym $mod+m exec "rofi -show window -no-default-config -config ~/.config/rofi
 bindsym $mod+d exec "rofi -show run -no-default-config -config ~/.config/rofi/config.rasi"
 bindsym $mod+x exec "rofi-powermenu"
 bindsym $mod+Shift+v exec ~/.config/rofi/scripts/rofi-copyq.sh
+exec --no-startup-id dunst
 
+
+#exec --no-startup-id ~/.screenlayout/default.sh
 exec_always --no-startup-id ~/.config/i3/scripts/touchpad.sh
 
 # Laptop
@@ -297,4 +311,3 @@ exec_always --no-startup-id ~/.config/i3/scripts/touchpad.sh
 
 # Set up monitors
 #exec --no-startup-id ~/.screenlayout/default.sh
-

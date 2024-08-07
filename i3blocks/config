@@ -1,0 +1,22 @@
+# i3blocks configuration
+
+[volume]
+command=$HOME/.config/i3blocks/scripts/volume.sh
+interval=5
+
+[battery]
+command=$HOME/.config/i3blocks/scripts/battery.sh
+interval=30
+
+[wifi]
+command=$HOME/.config/i3blocks/scripts/wifi.sh
+interval=30
+
+[weather]
+command=$HOME/.config/i3/scripts/weather.sh
+interval=600
+
+[tztime]
+command=$HOME/.config/i3blocks/scripts/tztime.sh
+interval=60
+
