@@ -87,7 +87,7 @@ bindsym $mod+q kill
 #bindsym Print exec grim -g "$(slurp)" - | wl-copy
 #bindsym $mod+Print exec grim -g "$(slurp)" ~/Pictures/$(date +%s).png && wl-copy < ~/Pictures/$(date +%s).png
 bindsym Print exec maim -s --format png /dev/stdout | xclip -selection clipboard -t image/png -i
-bindsym $mod+Print exec maim --select | tee ~/Pictures/$(date +%s).png | xclip -sel c -t image/png
+bindsym $mod+Print exec maim --select | tee ~/Pictures/Screenshots/$(date +%s).png | xclip -sel c -t image/png
 
 
 # ===================================================================
@@ -222,9 +222,12 @@ bar {
     #output HDMI-A-1
     height 25
     position top
+    tray_output DP-2
     font pango:OperatorMono Nerd Font 11
-    status_command i3status
+    #status_command i3status
+    status_command i3blocks
     tray_padding 5
+    mode dock
     strip_workspace_numbers yes
 
     colors {
@@ -259,6 +262,9 @@ bindsym $mod+m exec "rofi -show window -no-default-config -config ~/.config/rofi
 bindsym $mod+d exec "rofi -show run -no-default-config -config ~/.config/rofi/config.rasi"
 bindsym $mod+x exec "rofi-powermenu"
 bindsym $mod+Shift+v exec ~/.config/rofi/scripts/rofi-copyq.sh
+
+exec --no-startup-id dunst
+
 
 # Laptop
 #input "type:touchpad" {
