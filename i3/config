@@ -7,7 +7,7 @@ set $mod Mod4
 # Wallpaper setting
 # ===================================================================
 #exec_always --no-startup-id feh --bg-scale /home/shiva/Pictures/blue-space-7680x4320.jpg
-exec_always --no-startup-id sh -c "sleep 10; feh --bg-scale /home/shiva/Pictures/blue-space-7680x4320.jpg"
+exec_always --no-startup-id sh -c "sleep 10; feh --bg-scale /home/shiva/Pictures/backiee-128652-landscape.jpg"
 exec_always --no-startup-id GDK_BACKEND=x11 copyq
 
 # ===================================================================
@@ -97,6 +97,13 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# Add next and previous track bindings
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioStop exec --no-startup-id playerctl stop
+
 
 # ===================================================================
 # Brightness controls
@@ -213,7 +220,7 @@ bindsym $mod+minus scratchpad show
 # ===================================================================
 # Picom and transparency
 # ===================================================================
-#for_window [class=".*"] opacity 0.95
+for_window [class=".*"] opacity 0.95
 
 # ===================================================================
 # Bar appearance
@@ -265,6 +272,7 @@ bindsym $mod+Shift+v exec ~/.config/rofi/scripts/rofi-copyq.sh
 
 exec --no-startup-id dunst
 
+#exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
 
 # Laptop
 #input "type:touchpad" {
