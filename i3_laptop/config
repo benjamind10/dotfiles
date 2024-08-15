@@ -7,7 +7,7 @@ set $mod Mod4
 # Wallpaper setting
 # ===================================================================
 #exec_always --no-startup-id feh --bg-scale /home/shiva/Pictures/blue-space-7680x4320.jpg
-exec_always --no-startup-id sh -c "sleep 10; feh --bg-scale /home/bduran/Pictures/5-galaxy-cool-wallpapers-1024x640.webp"
+exec_always --no-startup-id sh -c "sleep 10; feh --bg-scale /home/bduran/Pictures/Wallpapers/backiee-128652-landscape.jpg"
 exec_always --no-startup-id QT_QPA_PLATFORM=xcb copyq
 
 # ===================================================================
@@ -15,6 +15,8 @@ exec_always --no-startup-id QT_QPA_PLATFORM=xcb copyq
 # ===================================================================
 bindsym $mod+Shift+F1 exec "xset dpms force off"
 bindsym $mod+Shift+F2 exec "xset dpms force on"
+
+
 
 
 # ===================================================================
@@ -206,10 +208,10 @@ mode "resize" {
     bindsym $down resize grow height 10 px or 10 ppt
     bindsym $up resize shrink height 10 px or 10 ppt
     bindsym $right resize grow width 10 px or 10 ppt
-    bindsym Left resize shrink width 1 px or 1 ppt
-    bindsym Down resize grow height 1 px or 1 ppt
-    bindsym Up resize shrink height 1 px or 1 ppt
-    bindsym Right resize grow width 1 px or 1 ppt
+    bindsym Left resize shrink width 10 px or 1 ppt
+    bindsym Down resize grow height 10 px or 1 ppt
+    bindsym Up resize shrink height 10 px or 1 ppt
+    bindsym Right resize grow width 10 px or 1 ppt
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -228,6 +230,7 @@ bindsym $mod+minus scratchpad show
 # ===================================================================
 # Bar appearance
 # ===================================================================
+
 bar {
     #output HDMI-A-1
     height 25
@@ -238,20 +241,22 @@ bar {
 
     tray_padding 5
     strip_workspace_numbers yes
-
+    mode dock
     colors {
-        separator  #1f222d
+        separator  #4C566A
+        #background #2e3440
+        background #000000
 
-        statusline #81a1c1
-
+        statusline #88C0D0
         # border  background text
-        focused_workspace  #1f222d #1f222d    #81a1c1
-        active_workspace   #1f222d #252936    #5e81ac
-        inactive_workspace #1f222d #1f222d    #4c566a
-        urgent_workspace   #1f222d #1f222d    #ee829f
-        binding_mode       #1f222d #81a1c1    #2e3440
+        focused_workspace  #3B4252 #3B4252    #88C0D0
+        active_workspace   #3B4252 #434C5E    #81A1C1
+        inactive_workspace #3B4252 #2E3440    #4C566A
+        urgent_workspace   #3B4252 #3B4252    #BF616A
+        binding_mode       #3B4252 #88C0D0    #2E3440
     }
 }
+
 
 # ===================================================================
 # Window colors
@@ -274,6 +279,7 @@ bindsym $mod+Shift+v exec ~/.config/rofi/scripts/rofi-copyq.sh
 exec --no-startup-id dunst
 
 
+bindsym $mod+Shift+a exec ~/.config/i3/scripts/change_audio_output.sh
 #exec --no-startup-id ~/.screenlayout/default.sh
 exec_always --no-startup-id ~/.config/i3/scripts/touchpad.sh
 

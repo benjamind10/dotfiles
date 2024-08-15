@@ -16,4 +16,5 @@ temperature=$(echo $weather | jq '.main.temp')
 description=$(echo $weather | jq -r '.weather[0].description')
 
 # Display weather information
-echo " $temperature °F, $description |"
+#echo " $temperature °F, $description |"
+echo " $temperature °F"
