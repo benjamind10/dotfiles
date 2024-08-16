@@ -17,3 +17,4 @@ vim.api.nvim_set_keymap("v", "<leader>c<space>", "<Plug>NERDCommenterToggle", {}
 
 vim.api.nvim_set_keymap("n", "<leader><Tab>[", ":bprevious<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader><Tab>]", ":bnext<CR>", {})
+vim.keymap.set("n", "<leader>rn", ":IncRename ")
