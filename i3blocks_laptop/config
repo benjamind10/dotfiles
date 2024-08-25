@@ -1,8 +1,4 @@
 # i3blocks configuration
-[microphone]
-command=~/path/to/check_call.sh
-interval=5
-
 [nowplaying]
 command=$HOME/.config/i3blocks/scripts/nowplaying.sh
 interval=5
@@ -14,6 +10,18 @@ interval=5
 [battery]
 command=$HOME/.config/i3blocks/scripts/battery.sh
 interval=30
+
+[cpu_usage]
+command=$HOME/.config/i3blocks/scripts/cpu_usage.sh
+interval=cpu_usage.sh
+interval=10
+#color=#00FF00
+
+[ram_usage]
+command=$HOME/.config/i3blocks/scripts/memory_usage.sh
+interval=10
+#color=#FFFF00
+
 
 [wifi]
 command=$HOME/.config/i3blocks/scripts/wifi.sh
