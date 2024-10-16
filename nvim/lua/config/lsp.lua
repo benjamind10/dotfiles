@@ -10,18 +10,18 @@ require("mason-lspconfig").setup({
 local lspconfig = require("lspconfig")
 
 -- Enable pyright for Python
-lspconfig.pyright.setup({
-  capabilities = require("cmp_nvim_lsp").default_capabilities(),
-  settings = {
-    python = {
-      analysis = {
-        autoSearchPaths = true,
-        useLibraryCodeForTypes = true,
-        diagnosticMode = "workspace",
-      },
-    },
-  },
-  root_dir = function(fname)
-    return lspconfig.util.find_git_ancestor(fname) or vim.loop.cwd()
-  end,
-})
+--lspconfig.pyright.setup({
+--capabilities = require("cmp_nvim_lsp").default_capabilities(),
+--settings = {
+--python = {
+--analysis = {
+--autoSearchPaths = true,
+--useLibraryCodeForTypes = true,
+--diagnosticMode = "workspace",
+--},
+--},
+--},
+--root_dir = function(fname)
+--return lspconfig.util.find_git_ancestor(fname) or vim.loop.cwd()
+--end,
+--})

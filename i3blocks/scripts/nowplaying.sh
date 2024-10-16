@@ -6,7 +6,7 @@ title=$(playerctl metadata title)
 
 # Check if either artist or title is empty, display "Nothing Playing"
 if [[ -z "$artist" || -z "$title" ]]; then
-  echo "Nothing Playing"
+  echo ""
 else
-  echo "▶ $artist - $title |"
+  echo "🎵 $artist - $title"
 fi

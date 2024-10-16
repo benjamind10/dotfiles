@@ -1,22 +1,47 @@
 # i3blocks configuration
 
+[nowplaying]
+command=$HOME/.config/i3blocks/scripts/nowplaying.sh
+interval=5
+
+
 [volume]
 command=$HOME/.config/i3blocks/scripts/volume.sh
 interval=5
 
-[battery]
-command=$HOME/.config/i3blocks/scripts/battery.sh
+[cpu_usage]
+command=$HOME/.config/i3blocks/scripts/cpu_usage.sh
+interval=cpu_usage.sh
+interval=10
+#color=#00FF00
+
+[ram_usage]
+command=$HOME/.config/i3blocks/scripts/memory_usage.sh
+interval=10
+#color=#FFFF00
+
+#[battery]
+#command=$HOME/.config/i3blocks/scripts/battery.sh
+#interval=30
+
+[ethernet]
+command=$HOME/.config/i3blocks/scripts/ethernet.sh
 interval=30
 
-[wifi]
-command=$HOME/.config/i3blocks/scripts/wifi.sh
-interval=30
+
+
+#[wifi]
+#command=$HOME/.config/i3blocks/scripts/wifi.sh
+#interval=30
 
 [weather]
 command=$HOME/.config/i3/scripts/weather.sh
 interval=600
 
+[apt-upgrades]
+command=$HOME/.config/i3blocks/scripts/apt-upgrades.sh
+interval=600
+
 [tztime]
 command=$HOME/.config/i3blocks/scripts/tztime.sh
 interval=60
-

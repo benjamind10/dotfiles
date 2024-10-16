@@ -9,6 +9,7 @@ return {
   { "hrsh7th/cmp-nvim-lsp" }, -- LSP source for nvim-cmp
   { "L3MON4D3/LuaSnip" }, -- Snippet engine
   { "saadparwaiz1/cmp_luasnip" }, -- Snippet completion source
+  { "gbprod/yanky.nvim" },
 
   {
     "preservim/nerdcommenter",
@@ -35,48 +36,58 @@ return {
     end,
   },
 
-  {
-    "marko-cerovac/material.nvim",
-    config = function()
-      vim.g.material_style = "darker" -- Set the style to 'darker'
-      require("material").setup({
-        contrast = {
-          sidebars = true, -- Enable contrast for sidebars
-          floating_windows = true, -- Enable contrast for floating windows
-          line_numbers = true, -- Enable contrast background for line numbers
-          sign_column = true, -- Enable contrast background for sign column
-          cursor_line = true, -- Enable darker background for the cursor line
-          non_current_windows = true, -- Enable darker background for non-current windows
-          popup_menu = true, -- Enable lighter background for the popup menu
-        },
-        italics = {
-          comments = true, -- Enable italic comments
-          keywords = true, -- Enable italic keywords
-          functions = true, -- Enable italic functions
-          strings = true, -- Enable italic strings
-          variables = true, -- Enable italic variables
-        },
-        contrast_filetypes = { -- Specify which filetypes get the contrasted (darker) background
-          "terminal", -- Darker terminal background
-          "packer", -- Darker packer background
-          "qf", -- Darker quickfix background
-        },
-      })
-      vim.cmd("colorscheme material") -- Set the colorscheme to 'material'
-    end,
-  },
+  --{
+  --"marko-cerovac/material.nvim",
+  --config = function()
+  --vim.g.material_style = "darker" -- Set the style to 'darker'
+  --require("material").setup({
+  --contrast = {
+  --sidebars = true, -- Enable contrast for sidebars
+  --floating_windows = true, -- Enable contrast for floating windows
+  --line_numbers = true, -- Enable contrast background for line numbers
+  --sign_column = true, -- Enable contrast background for sign column
+  --cursor_line = true, -- Enable darker background for the cursor line
+  --non_current_windows = true, -- Enable darker background for non-current windows
+  --popup_menu = true, -- Enable lighter background for the popup menu
+  --},
+  --italics = {
+  --comments = true, -- Enable italic comments
+  --keywords = true, -- Enable italic keywords
+  --functions = true, -- Enable italic functions
+  --strings = true, -- Enable italic strings
+  --variables = true, -- Enable italic variables
+  --},
+  --contrast_filetypes = { -- Specify which filetypes get the contrasted (darker) background
+  --"terminal", -- Darker terminal background
+  --"packer", -- Darker packer background
+  --"qf", -- Darker quickfix background
+  --},
+  --})
+  --vim.cmd("colorscheme nord") -- Set the colorscheme to 'material'
+  --end,
+  --},
 
   -- Add vim-test for additional test running capabilities
   { "vim-test/vim-test" },
+  { "oguzbilgic/vim-gdiff" },
+  { "tpope/vim-fugitive" },
 
-  -- Configure LazyVim to load gruvbox
+  --Configure LazyVim to load gruvbox
   --{
-  --  "LazyVim/LazyVim",
-  --  opts = {
-  --    colorscheme = "gruvbox",
-  --  },
+  --"LazyVim/LazyVim",
+  --opts = {
+  --colorscheme = "gruvbox",
+  --},
   --},
 
+  { "shaunsingh/nord.nvim" },
+
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "gruvbox",
+    },
+  },
   -- change trouble config
   --{
   --  "folke/trouble.nvim",
@@ -121,17 +132,17 @@ return {
   },
 
   -- add pyright to lspconfig
-  {
-    "neovim/nvim-lspconfig",
-    ---@class PluginLspOpts
-    opts = {
-      ---@type lspconfig.options
-      servers = {
-        -- pyright will be automatically installed with mason and loaded with lspconfig
-        pyright = {},
-      },
-    },
-  },
+  --{
+  --"neovim/nvim-lspconfig",
+  -----@class PluginLspOpts
+  --opts = {
+  -----@type lspconfig.options
+  --servers = {
+  ---- pyright will be automatically installed with mason and loaded with lspconfig
+  --pyright = {},
+  --},
+  --},
+  --},
 
   -- add tsserver and setup with typescript.nvim instead of lspconfig
   {

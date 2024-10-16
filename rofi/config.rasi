@@ -2,4 +2,12 @@ configuration {
   modi: "window,run,drun,filebrowser";
 }
 
-@theme "./dark-blue.rasi"
+entry {
+  width: 30%;  // Adjust this percentage to increase/decrease the width of the app name column
+}
+
+element-text {
+  margin-left: 10px; // Adjust to give more space to the description
+}
+
+@theme "./gruvbox-dark.rasi"
