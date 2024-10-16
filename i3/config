@@ -7,15 +7,30 @@ set $mod Mod4
 # Wallpaper setting
 # ===================================================================
 #exec_always --no-startup-id feh --bg-scale /home/shiva/Pictures/blue-space-7680x4320.jpg
-exec_always --no-startup-id sh -c "sleep 10; feh --bg-scale /home/shiva/Pictures/backiee-128652-landscape.jpg"
-exec_always --no-startup-id GDK_BACKEND=x11 copyq
+#exec_always --no-startup-id sh -c "sleep 1; feh --bg-scale /home/shiva/Pictures/Wallpapers/backiee-128652-landscape.jpg"
+exec_always --no-startup-id sh -c "sleep 1; feh --bg-scale /home/shiva/Pictures/Wallpapers/gruvbox-2.webp"
+#exec_always --no-startup-id sh -c "sleep 1; feh --bg-scale /home/shiva/Pictures/Wallpapers/FhjUNv6.jpeg"
+#exec_always --no-startup-id sh -c "sleep 1; feh --bg-scale /home/shiva/Pictures/Wallpapers/dark-anime-1280X720-wallpaper-lfafwgaogpbf9pfk.webp"
+exec_always --no-startup-id  copyq
 
+#bindsym Ctrl+Shift+c exec "copyq copy \"$(xclip -o -selection clipboard)\""
 # ===================================================================
 # Keybindings to turn displays on/off
 # ===================================================================
-bindsym $mod+Shift+F1 exec "xset dpms force off"
-bindsym $mod+Shift+F2 exec "xset dpms force on"
+#bindsym $mod+Shift+F1 exec "xset dpms force off"
+#bindsym $mod+Shift+F2 exec "xset dpms force on"
 
+# Enable DPMS and set timeouts
+exec --no-startup-id xset +dpms dpms 0 0 900
+
+# Disable the X screensaver
+exec --no-startup-id xset s off
+
+# Optional: Use xautolock with i3lock
+exec --no-startup-id xautolock -time 15 -locker "i3lock -n; xset dpms force off"
+
+# Optional: Increase mouse movement threshold
+# exec --no-startup-id xset m 0 0
 
 # ===================================================================
 # Movement keys (qwerty setup)
@@ -25,7 +40,7 @@ set $down k
 set $left j
 set $right semicolon
 
-font pango:DroidSansM Nerd Font Mono 11
+font pango:3270 Nerd Font Mono 11
 
 # ===================================================================
 # Workspace keybindings
@@ -122,7 +137,7 @@ bindsym $mod+i bar mode invisible
 # ===================================================================
 for_window [class="^.*"] border pixel 1
 gaps inner 5
-gaps outer 1
+gaps outer 5 
 smart_gaps on
 smart_borders on
 
@@ -199,14 +214,14 @@ bindsym $mod+a focus parent
 # Resize window
 bindsym $mod+r mode "resize"
 mode "resize" {
-    bindsym $left resize shrink width 10 px or 10 ppt
-    bindsym $down resize grow height 10 px or 10 ppt
-    bindsym $up resize shrink height 10 px or 10 ppt
-    bindsym $right resize grow width 10 px or 10 ppt
-    bindsym Left resize shrink width 1 px or 1 ppt
-    bindsym Down resize grow height 1 px or 1 ppt
-    bindsym Up resize shrink height 1 px or 1 ppt
-    bindsym Right resize grow width 1 px or 1 ppt
+    bindsym $left resize shrink width 5 px or 5 ppt
+    bindsym $down resize grow height 5 px or 5 ppt
+    bindsym $up resize shrink height 5 px or 5 ppt
+    bindsym $right resize grow width 5 px or 5 ppt
+    bindsym Left resize shrink width 5 px or 5 ppt
+    bindsym Down resize grow height 5 px or 5 ppt
+    bindsym Up resize shrink height 5 px or 5 ppt
+    bindsym Right resize grow width 5 px or 5 ppt
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -220,46 +235,89 @@ bindsym $mod+minus scratchpad show
 # ===================================================================
 # Picom and transparency
 # ===================================================================
-for_window [class=".*"] opacity 0.95
+#exec --no-startup-id picom -b
+#for_window [class=".*"] opacity 0.95
 
 # ===================================================================
-# Bar appearance
+# Bar appearance with Gruvbox Theme
 # ===================================================================
 bar {
     #output HDMI-A-1
     height 25
     position top
-    tray_output DP-2
-    font pango:OperatorMono Nerd Font 11
-    #status_command i3status
+    tray_output DP-1
+    font pango:3270 Nerd Font Bold 11
     status_command i3blocks
     tray_padding 5
     mode dock
     strip_workspace_numbers yes
 
     colors {
-        separator  #1f222d
-        background #1f222d
-        statusline #81a1c1
+        #separator          #3c3836
+        #separator          grey
+        #background         #282828
+        statusline         #ebdbb2
+        # Background of the bar
+        background         #1C1C1C
 
-        # border  background text
-        focused_workspace  #1f222d #1f222d    #81a1c1
-        active_workspace   #1f222d #252936    #5e81ac
-        inactive_workspace #1f222d #1f222d    #4c566a
-        urgent_workspace   #1f222d #1f222d    #ee829f
-        binding_mode       #1f222d #81a1c1    #2e3440
+        #                  border             background         text
+        focused_workspace  #458588            #458588            #282828
+        active_workspace   #3c3836            #3c3836            #ebdbb2
+        inactive_workspace #282828            #282828            #a89984
+        urgent_workspace   #cc241d            #cc241d            #fbf1c7
+        binding_mode       #b16286            #b16286            #fbf1c7
     }
 }
 
 # ===================================================================
+# Bar appearance
+# ===================================================================
+#bar {
+    ##output HDMI-A-1
+    #height 25
+    #position top
+#tray_output DP-1
+    #font pango:OperatorMono Nerd Font 11
+    ##status_command i3status
+    #status_command i3blocks
+    #tray_padding 5
+    #mode dock
+    #strip_workspace_numbers yes
+
+    #colors {
+        #separator  #1f222d
+        #background #1f222d
+        #statusline #81a1c1
+        #background #000000
+
+        ## border  background text
+        #focused_workspace  #1f222d #1f222d    #81a1c1
+        #active_workspace   #1f222d #252936    #5e81ac
+        #inactive_workspace #1f222d #1f222d    #4c566a
+        #urgent_workspace   #1f222d #1f222d    #ee829f
+        #binding_mode       #1f222d #81a1c1    #2e3440
+    #}
+#}
+
+# ===================================================================
 # Window colors
 # ===================================================================
-client.focused          #81a1c1 #81a1c1 #ffffff #81a1c1
-client.unfocused        #2e3440 #1f222d #888888 #1f222d
-client.focused_inactive #2e3440 #1f222d #888888 #1f222d
-client.placeholder      #2e3440 #1f222d #888888 #1f222d
-client.urgent           #900000 #900000 #ffffff #900000
-client.background       #242424
+#client.focused          #81a1c1 #81a1c1 #ffffff #81a1c1
+#client.unfocused        #2e3440 #1f222d #888888 #1f222d
+#client.focused_inactive #2e3440 #1f222d #888888 #1f222d
+#client.placeholder      #2e3440 #1f222d #888888 #1f222d
+#client.urgent           #900000 #900000 #ffffff #900000
+#client.background       #242424
+
+# ===================================================================
+# Window colors with Gruvbox Theme
+# ===================================================================
+client.focused          #458588 #458588 #282828 #458588
+client.unfocused        #282828 #282828 #a89984 #282828
+client.focused_inactive #3c3836 #3c3836 #a89984 #3c3836
+client.placeholder      #282828 #282828 #a89984 #282828
+client.urgent           #cc241d #cc241d #fbf1c7 #cc241d
+client.background       #282829
 
 # ===================================================================
 # Miscellaneous settings
@@ -267,10 +325,14 @@ client.background       #242424
 exec xset r rate 300 50 h&
 bindsym $mod+m exec "rofi -show window -no-default-config -config ~/.config/rofi/config.rasi"
 bindsym $mod+d exec "rofi -show run -no-default-config -config ~/.config/rofi/config.rasi"
+bindsym $mod+Shift+e exec $HOME/.config/rofi/scripts/custom_commands.sh
+
 bindsym $mod+x exec "rofi-powermenu"
 bindsym $mod+Shift+v exec ~/.config/rofi/scripts/rofi-copyq.sh
 
 exec --no-startup-id dunst
+for_window [class="Dunst"] floating enable
+
 
 #exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
 
